@@ -329,7 +329,7 @@ if not options.test:
             model.zero_grad()
             if bigram_embedding is not None:
                 out=model(batch_x["task"],batch_x["uni"],batch_x["seq_len"],batch_x["bi1"],batch_x["bi2"],batch_y["tags"])
-            else: out = model(batch_x["task"],batch_x["uni"],batch_x["seq_len"],batch_y["tags"])
+            else: out = model(batch_x["task"],batch_x["uni"],batch_x["seq_len"],tags=batch_y["tags"])
             loss = torch.mean(out["loss"])
             train_loss += loss.item() 
             tot+=1
